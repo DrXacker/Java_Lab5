@@ -9,14 +9,14 @@ import java.util.Properties;
 public class Injector {
     private static final String PROPERTIES_FILE = "inj.properties";
 
-    private final Properties props;
+    private final Properties propers;
 
     /**
      * Конструктор, который загружает свойства из данного файла
      * @param propertiesFileName имя файла свойств
      */
     public Injector(String propertiesFileName){
-        props = new Properties();
+        propers = new Properties();
 
         InputStream propsInputStream = getClass().getClassLoader().getResourceAsStream(propertiesFileName);
         if (propsInputStream == null) {
@@ -24,7 +24,7 @@ public class Injector {
         }
 
         try {
-            props.load(propsInputStream);
+            propers.load(propsInputStream);
         } catch (IOException exception){
             throw new RuntimeException("Не удалось загрузить файл inj.properties");
         }
@@ -79,7 +79,7 @@ public class Injector {
             throw new RuntimeException("Нельзя вводить поля, которые не являются интерфейсом");
         }
 
-        String implementationClassName = props.getProperty(interfaceClass.getName());
+        String implementationClassName = propers.getProperty(interfaceClass.getName());
         if (implementationClassName == null){
             return null;
         }
