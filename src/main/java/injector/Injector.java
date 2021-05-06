@@ -20,13 +20,13 @@ public class Injector {
 
         InputStream propsInputStream = getClass().getClassLoader().getResourceAsStream(propertiesFileName);
         if (propsInputStream == null) {
-            throw new RuntimeException("Unable to load inj.properties file");
+            throw new RuntimeException("Не удалось загрузить файл inj.properties");
         }
 
         try {
             props.load(propsInputStream);
         } catch (IOException exception){
-            throw new RuntimeException("Unable to load inj.properties file");
+            throw new RuntimeException("Не удалось загрузить файл inj.properties");
         }
     }
 
@@ -53,7 +53,7 @@ public class Injector {
                 Class<?> implementationClass = findImplementationClass(fieldClass);
 
                 if (implementationClass == null){
-                    throw new RuntimeException("Unable to find implementation for " + fieldClass.getName());
+                    throw new RuntimeException("Не удалось найти реализацию для " + fieldClass.getName());
                 }
 
                 Object implementation = instantiateClassEmptyConstructor(implementationClass);
@@ -62,7 +62,7 @@ public class Injector {
                 try {
                     field.set(bean, implementation);
                 } catch (Exception ex){
-                    throw new RuntimeException("Unable to inject field " + field.getName());
+                    throw new RuntimeException("Невозможно ввести поле " + field.getName());
                 }
             }
         }

@@ -1,4 +1,5 @@
 import injector.Injector;
+import other.SomeBean;
 
 public class Main {
     public static void main(String[] args) {
