@@ -5,9 +5,9 @@ public class Main {
     public static void main(String[] args) {
         Injector injector = new Injector();
 
-        SomeBean bean = new SomeBean();
-        injector.inject(bean);
+        SomeBean someBean = new SomeBean();
+        injector.inject(someBean);
 
-        bean.foo();
+        someBean.foo();
     }
 }
